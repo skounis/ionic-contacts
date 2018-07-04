@@ -10,6 +10,7 @@ import { ContactStore } from '../../stores/contact.store'
   templateUrl: 'home.html'
 })
 export class HomePage {
+  cache = null;
 
   constructor(
     public navCtrl: NavController,
@@ -29,6 +30,25 @@ export class HomePage {
 
   create() {
     this.navCtrl.push(EditPage, { record: null, store: this.store });
+  }
+
+  filter(event) {
+    console.log(event);
+    const val = event.target.value;
+    console.log(val);
+
+    if (!this.cache) {
+      this.cache = this.store.records;
+    }
+
+    if (val && val.trim() != '') {
+      this.store.records = this.cache.filter((item) => {
+        return (item.lastname.toLowerCase().indexOf(val.toLowerCase()) > -1
+                || item.firstname.toLowerCase().indexOf(val.toLowerCase()) > -1 );
+      })
+    } else {
+      this.store.records = this.cache;
+    }
   }
 
 }
