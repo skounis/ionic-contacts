@@ -25,7 +25,7 @@ export class EditPage implements OnInit {
     private fb: FormBuilder,
     public navCtrl: NavController) {
 
-    this.record = navParams.get('record') || <Contact>{};
+    this.record = navParams.get('record') || Contact.instance();
     this.store = navParams.get('store');
   }
 
@@ -33,8 +33,8 @@ export class EditPage implements OnInit {
   ngOnInit() {
     this.form = this.fb.group(
       {
-        firstName: [this.record.firstname],
-        lastName: [this.record.lastname, Validators.required],
+        firstname: [this.record.firstname],
+        lastname: [this.record.lastname, Validators.required],
         email: [this.record.email, [Validators.required, Validators.email]],
         // phones: this.fb.array([
         //   this.initPhones(),
@@ -47,7 +47,7 @@ export class EditPage implements OnInit {
   }
 
   initPhones() {
-    // initialize our address
+    // initialize phones
     const controls = [];
 
     for (let i=0; i < this.record.phones.length; i++) {
@@ -58,18 +58,26 @@ export class EditPage implements OnInit {
         })
       )
     }
-
     return controls
-
-    // return this.fb.group({
-    //   phoneType: ['', Validators.required],
-    //   phoneNumber: ['']
-    // });
   }
 
   addPhones() {
     // add phones to the list
     const control = <FormArray>this.form.controls['phones'];
     // control.push(this.initPhones());
+  }
+
+  save() {
+    console.log('Record:', this.record);
+    console.log('Form:', this.form.value);
+
+    const updated = Object.assign(this.record, this.form.value)
+
+    console.log('Updated:', updated);
+
+    this.store.update(updated);
+    this.navCtrl.pop();
+    // // Toast
+    // this.toastService.show();
   }
 }

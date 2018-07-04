@@ -5,113 +5,9 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-     <ion-list-header>
-       Busters
-     </ion-list-header>
-
-     <ion-item-sliding>
-       <ion-item (click)="show()">
-         <ion-avatar item-start>
-           <img src="http://i.pravatar.cc/64?u=09">
-         </ion-avatar>
-         <h2>Venkman</h2>
-         <p>Back off man, I'm a scientist.</p>
-       </ion-item>
-       <ion-item-options>
-         <button ion-button color="danger" icon-start>
-           <ion-icon name="Delete"></ion-icon>
-           Delete
-         </button>
-       </ion-item-options>
-     </ion-item-sliding>
-
-
-     <ion-item-sliding>
-       <ion-item>
-         <ion-avatar item-start>
-           <img src="http://i.pravatar.cc/64?u=10">
-         </ion-avatar>
-         <h2>Egon</h2>
-         <p>We're gonna go full stream.</p>
-       </ion-item>
-       <ion-item-options>
-         <button ion-button color="danger" icon-start>
-           <ion-icon name="Delete"></ion-icon>
-           Delete
-         </button>
-       </ion-item-options>
-     </ion-item-sliding>
-
-     <ion-item-sliding>
-       <ion-item>
-         <ion-avatar item-start>
-           <img src="http://i.pravatar.cc/64?u=11">
-         </ion-avatar>
-         <h2>Ray</h2>
-         <p>Ugly little spud, isn't he?</p>
-       </ion-item>
-       <ion-item-options>
-         <button ion-button color="danger" icon-start>
-           <ion-icon name="Delete"></ion-icon>
-           Delete
-         </button>
-       </ion-item-options>
-     </ion-item-sliding>
-
-     <ion-item-sliding>
-       <ion-item>
-         <ion-avatar item-start>
-           <img src="http://i.pravatar.cc/64?u=12">
-         </ion-avatar>
-         <h2>Winston</h2>
-         <p>That's a big Twinkie.</p>
-       </ion-item>
-       <ion-item-options>
-         <button ion-button color="danger" icon-start>
-           <ion-icon name="Delete"></ion-icon>
-           Delete
-         </button>
-       </ion-item-options>
-     </ion-item-sliding>
-
-     <ion-item-sliding>
-       <ion-item>
-         <ion-avatar item-start>
-           <img src="http://i.pravatar.cc/64?u=13">
-         </ion-avatar>
-         <h2>Tully</h2>
-         <p>Okay, who brought the dog?</p>
-       </ion-item>
-       <ion-item-options>
-         <button ion-button color="danger" icon-start>
-           <ion-icon name="Delete"></ion-icon>
-           Delete
-         </button>
-       </ion-item-options>
-     </ion-item-sliding>
-
-     <ion-item-sliding>
-       <ion-item>
-         <ion-avatar item-start>
-           <img src="http://i.pravatar.cc/64?u=14">
-         </ion-avatar>
-         <h2>Dana</h2>
-         <p>I am The Gatekeeper!</p>
-       </ion-item>
-       <ion-item-options>
-         <button ion-button color="danger"icon-start >
-           <ion-icon name="Delete"></ion-icon>
-           Delete
-         </button>
-       </ion-item-options>
-     </ion-item-sliding>
-
-   </ion-list>
-
    <ion-list>
      <ion-list-header>
-       Ghosts
+       Contacts
      </ion-list-header>
 
      <ion-item-sliding *ngFor="let record of store.records;" #slidingItem>
@@ -130,4 +26,8 @@
        </ion-item-options>
      </ion-item-sliding>
    </ion-list>
+
+   <ion-fab right bottom padding>
+     <button ion-fab (click)="create()"><ion-icon name="add"></ion-icon></button>
+   </ion-fab>
 </ion-content>

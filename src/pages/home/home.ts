@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DetailsPage } from '../details/details';
+import { EditPage } from '../edit/edit';
 import { NavController } from 'ionic-angular';
 
 import { Contact } from '../../models/contact';
@@ -24,7 +25,11 @@ export class HomePage {
   }
 
   show(record) {
-  	this.navCtrl.push(DetailsPage, { record: record, store: this.store });
+  	this.navCtrl.push(EditPage, { record: record, store: this.store });
+  }
+
+  create() {
+    this.navCtrl.push(EditPage, { record: null, store: this.store });
   }
 
 }

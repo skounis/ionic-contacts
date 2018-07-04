@@ -32,10 +32,10 @@ export class ContactStore {
 
 		if (model.id) {
 			response = await this.data.updateContact(model);
-			this.updateLocal(response.data);
+			this.updateLocal(response);
 		} else {
 			response = await this.data.createContact(model);
-			this.createLocal(response.data);
+			this.createLocal(response);
 		}
 		return response;
 	}

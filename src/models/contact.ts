@@ -4,6 +4,16 @@ export class Contact {
   lastname?: string;
 	email?: string;
 	phones?: Phone[];
+
+	static instance(): Contact {
+		const c = new Contact();
+		c.firstname = '';
+		c.lastname = '';
+		c.email = '';
+		c.phones = [];
+
+		return c;
+	}
 }
 
 export class Phone {
