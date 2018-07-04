@@ -1,6 +1,6 @@
 export class Contact {
 	id?: string;
-  firtsname?: string;
+  firstname?: string;
   lastname?: string;
 	email?: string;
 	phones?: Phone[];

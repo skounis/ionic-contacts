@@ -1,0 +1,77 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>{{record.id ? 'Edit' : 'New'}} Contact</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="edit()">
+				<ion-icon name="create"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<div padding>
+		<h1>{{record.firstname}} {{record.lastname}}</h1>
+	</div>
+
+
+	<form (ngSubmit)="submit()" [formGroup]="form">
+		<ion-list formGroupName="profile">
+			<ion-list-header color="light">
+				Contact
+			</ion-list-header>
+
+			<!-- First Name -->
+			<!-- ========== -->
+			<ion-item [ngClass]="{ invalid: firstNameErrors.hasError('*', ['touched']) }">
+				<ion-label stacked>First Name*</ion-label>
+				<ion-input type="text" placeholder="Enter the first name" formControlName="firstName"></ion-input>
+			</ion-item>
+
+			<div ngxErrors="profile.firstName" #firstNameErrors="ngxErrors" padding-horizontal>
+				<div [ngxError]="['required']" [when]="['touched']">First name is required</div>
+			</div>
+
+			<!-- Last Name -->
+			<!-- ========== -->
+			<ion-item [ngClass]="{ invalid: lastNameErrors.hasError('*', ['touched']) }">
+				<ion-label stacked>Last Name*</ion-label>
+				<ion-input type="text" placeholder="Enter the last name" formControlName="lastName"></ion-input>
+			</ion-item>
+
+			<div ngxErrors="profile.lastName" #lastNameErrors="ngxErrors" padding-horizontal>
+				<div [ngxError]="['required']" [when]="['touched']">Last name is required</div>
+			</div>
+
+			<!-- Last Name -->
+			<!-- ========== -->
+			<ion-item  [ngClass]="{ invalid: emailErrors.hasError('*', ['touched']) }">
+				<ion-label stacked>Email*</ion-label>
+				<ion-input type="text" placeholder="Enter the email" formControlName="email"></ion-input>
+			</ion-item>
+
+			<div ngxErrors="email" #emailErrors="ngxErrors" padding-horizontal>
+				<div [ngxError]="['email', 'required']" [when]="['touched']">It should be a valid email</div>
+			</div>
+		</ion-list>
+
+		<!-- Phones -->
+		<!-- ===== -->
+		<ion-list>
+			<ion-list-header>
+				Phones
+			</ion-list-header>
+			<ion-item *ngFor="let phone of form.controls.phones.controls; let i=index">
+				<ion-label stacked>{{phone.phoneType}}</ion-label>
+				<ion-input type="text" [(ngModel)]="phone.phoneNumber" readonly></ion-input>
+			</ion-item>
+		</ion-list>
+
+	</form>
+
+
+	<ion-fab right bottom padding>
+		<button ion-fab (click)="edit()"><ion-icon name="create"></ion-icon></button>
+	</ion-fab>
+
+</ion-content>

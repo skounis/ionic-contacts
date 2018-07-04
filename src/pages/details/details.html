@@ -18,12 +18,17 @@
 			<ion-label stacked>Email</ion-label>
 			<ion-input type="text" [(ngModel)]="record.email" readonly></ion-input>
 		</ion-item>
-
-		<ion-item *ngIf="record.phones && record.phones[0]">
-			<ion-label stacked>Mobile phone</ion-label>
-			<ion-input type="text" [(ngModel)]="record.phones[0].phoneNumber" readonly></ion-input>
-		</ion-item>
 	</ion-list>
+
+  <ion-list class="sf-form-readonly">
+    <ion-list-header>
+      Phones
+    </ion-list-header>
+    <ion-item *ngFor="let phone of record.phones">
+      <ion-label stacked>{{phone.phoneType}}</ion-label>
+      <ion-input type="text" [(ngModel)]="phone.phoneNumber" readonly></ion-input>
+    </ion-item>
+  </ion-list>
 
 	<ion-fab right bottom padding>
 		<button ion-fab (click)="edit()"><ion-icon name="create"></ion-icon></button>

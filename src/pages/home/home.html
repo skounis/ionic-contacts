@@ -114,7 +114,7 @@
        Ghosts
      </ion-list-header>
 
-     <ion-item-sliding *ngFor="let record of store.records; " #slidingItem>
+     <ion-item-sliding *ngFor="let record of store.records;" #slidingItem>
        <ion-item (click)="show(record)">
          <ion-avatar item-start>
            <img src="http://i.pravatar.cc/64?u={{record.id}}">
