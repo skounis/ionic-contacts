@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { EditPage } from '../edit/edit';
 import { ContactStore } from '../../stores/contact.store';
 import { Contact } from '../../models/contact';
 
@@ -20,4 +21,7 @@ export class DetailsPage {
     this.store = navParams.get('store');
   }
 
+  edit() {
+    this.navCtrl.push(EditPage, { record: this.record, store: this.store });
+  }
 }

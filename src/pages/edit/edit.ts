@@ -13,7 +13,7 @@ import { ContactStore } from '../../stores/contact.store';
   selector: 'page-edit',
   templateUrl: 'edit.html'
 })
-export class DetailsPage implements OnInit {
+export class EditPage implements OnInit {
 
   record: Contact;
   private store: ContactStore;
@@ -33,27 +33,43 @@ export class DetailsPage implements OnInit {
   ngOnInit() {
     this.form = this.fb.group(
       {
-        firstName: [this.record.firstname, Validators.required],
+        firstName: [this.record.firstname],
         lastName: [this.record.lastname, Validators.required],
         email: [this.record.email, [Validators.required, Validators.email]],
-        mobilePhones: this.fb.array([
-          this.initPhones(),
-        ])
+        // phones: this.fb.array([
+        //   this.initPhones(),
+        // ])
+        phones: this.fb.array(this.initPhones())
       }
     );
+
+    console.log(this.form);
   }
 
   initPhones() {
     // initialize our address
-    return this.fb.group({
-      phoneType: ['', Validators.required],
-      phoneNumber: ['']
-    });
+    const controls = [];
+
+    for (let i=0; i < this.record.phones.length; i++) {
+      controls.push(
+        this.fb.group({
+          phoneType: [this.record.phones[i].phoneType, Validators.required],
+          phoneNumber: [this.record.phones[i].phoneNumber, Validators.pattern(/^0\d{2}-\d{7}/gm)]
+        })
+      )
+    }
+
+    return controls
+
+    // return this.fb.group({
+    //   phoneType: ['', Validators.required],
+    //   phoneNumber: ['']
+    // });
   }
 
   addPhones() {
     // add phones to the list
-    const control = <FormArray>this.form.controls['mobilePhones'];
-    control.push(this.initPhones());
+    const control = <FormArray>this.form.controls['phones'];
+    // control.push(this.initPhones());
   }
 }
