@@ -10,7 +10,8 @@ firstname<ion-header>
 </ion-header>
 
 <ion-content>
-	<form (ngSubmit)="submit()" [formGroup]="form">
+	<!-- <form (ngSubmit)="submit()" [formGroup]="form"> -->
+	<form [formGroup]="form">
 		<ion-list>
 			<ion-list-header>
 				Contact
@@ -55,11 +56,14 @@ firstname<ion-header>
 		<!-- formGroupName="profile" -->
 		<ion-list  formArrayName="phones">
 			<ion-list-header>
-				Phones
+				Phones <span item-end><button ion-button clear (click)="addPhone();">Add</button></span>
 			</ion-list-header>
 			<ng-container *ngFor="let phone of form.controls.phones.controls; let i=index">
 				<div [formGroupName]="i">
-					<ion-item-divider color="light">Phone {{i + 1}}</ion-item-divider>
+					<ion-item-divider color="light">
+						Phone {{i + 1}}
+						<span item-end><button ion-button clear (click)="removePhone(i);">Remove</button></span>
+					</ion-item-divider>
 					<ion-item>
 						<ion-label stacked>Phone Type</ion-label>
 						<!-- <ion-input type="text" placeholder="Enter phone type" formControlName="phoneType"></ion-input> -->

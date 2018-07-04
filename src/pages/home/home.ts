@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { DetailsPage } from '../details/details';
 import { EditPage } from '../edit/edit';
 import { NavController } from 'ionic-angular';
 

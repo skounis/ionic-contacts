@@ -7,7 +7,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ContactPage } from '../pages/contact/contact';
 import { ContactStore } from '../stores/contact.store';
 import { DataService } from '../services/data.service';
-import { DetailsPage } from '../pages/details/details';
 import { EditPage } from '../pages/edit/edit';
 import { HomePage } from '../pages/home/home';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,7 +19,6 @@ import { TabsPage } from '../pages/tabs/tabs';
   declarations: [
     AboutPage,
     ContactPage,
-    DetailsPage,
     EditPage,
     HomePage,
     MyApp,
@@ -36,7 +34,6 @@ import { TabsPage } from '../pages/tabs/tabs';
   entryComponents: [
     AboutPage,
     ContactPage,
-    DetailsPage,
     EditPage,
     HomePage,
     MyApp,

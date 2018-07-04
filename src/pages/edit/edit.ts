@@ -61,10 +61,19 @@ export class EditPage implements OnInit {
     return controls
   }
 
-  addPhones() {
-    // add phones to the list
+  addPhone() {
     const control = <FormArray>this.form.controls['phones'];
-    // control.push(this.initPhones());
+    // add phone to the list
+    const c = this.fb.group({
+      phoneType: ['mobile', Validators.required],
+      phoneNumber: ['', Validators.pattern(/^0\d{2}-\d{7}/gm)]
+    })
+    control.push(c);
+  }
+
+  removePhone(i: number) {
+    const control = <FormArray>this.form.controls['phones'];;
+    control.removeAt(i);
   }
 
   save() {
