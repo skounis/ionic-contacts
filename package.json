@@ -1,10 +1,19 @@
 {
   "name": "ionic-contacts",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": {
+    "name": "Stavros Kounis",
+    "email": "skounis@gmail.com",
+    "url": "https://skounis.github.io/"
+  },
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
+    "dev": "nf start",
+    "start":"ionic-app-scripts serve",
+    "electron dist": "electron .",
+    "ebuild":"npm run build && node_modules/.bin/build",
+
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
@@ -34,7 +43,24 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.10",
+    "electron": "^2.0.4",
+    "electron-builder": "^20.19.1",
+    "foreman": "^3.0.1",
     "typescript": "~2.6.2"
   },
-  "description": "An Ionic project"
+  "description": "ionic framework based electron project",
+  "main": "electron/electron.js",
+  "config": {
+    "ionic_bundler": "webpack",
+    "ionic_webpack": "./config/webpack.config.js"
+  },
+  "build": {
+    "appId": "io.github.skounis.ionic-electron-contacts",
+    "electronVersion": "1.7.5",
+    "asar":false,
+    "files": [
+      "www/**/*",
+      "electron/*"
+    ]
+  }
 }
