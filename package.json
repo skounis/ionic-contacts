@@ -10,10 +10,9 @@
   "private": true,
   "scripts": {
     "dev": "nf start",
-    "start":"ionic-app-scripts serve",
+    "start": "ionic-app-scripts serve",
     "electron dist": "electron .",
-    "ebuild":"npm run build && node_modules/.bin/build",
-
+    "ebuild": "npm run build && node_modules/.bin/build",
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
@@ -82,7 +81,7 @@
   "build": {
     "appId": "io.github.skounis.ionic-electron-contacts",
     "electronVersion": "1.7.5",
-    "asar":false,
+    "asar": false,
     "files": [
       "www/**/*",
       "electron/*"
