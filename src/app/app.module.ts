@@ -5,7 +5,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { AboutPage } from '../pages/about/about';
 import { AuthInterceptor } from '../interceptors/auth.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
-import { ContactPage } from '../pages/contact/contact';
 import { ContactStore } from '../stores/contact.store';
 import { DataService } from '../services/data.service';
 import { EditPage } from '../pages/edit/edit';
@@ -19,7 +18,6 @@ import { TabsPage } from '../pages/tabs/tabs';
 @NgModule({
   declarations: [
     AboutPage,
-    ContactPage,
     EditPage,
     HomePage,
     MyApp,
@@ -34,7 +32,6 @@ import { TabsPage } from '../pages/tabs/tabs';
   bootstrap: [IonicApp],
   entryComponents: [
     AboutPage,
-    ContactPage,
     EditPage,
     HomePage,
     MyApp,
