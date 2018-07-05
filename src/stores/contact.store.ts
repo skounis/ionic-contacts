@@ -1,14 +1,16 @@
-import { Injectable } from '@angular/core';
 import { Contact } from '../models/contact';
 import { DataService } from '../services/data.service';
+import { Injectable } from '@angular/core';
+import { ToastController } from 'ionic-angular';
 
 @Injectable()
 export class ContactStore {
 	records: Contact[];
 	current: Contact;
 
-	constructor(private data: DataService) {
-
+	constructor(
+		private data: DataService,
+		private toastCtrl: ToastController) {
 	}
 
   /**
@@ -16,6 +18,7 @@ export class ContactStore {
    */
 	async load() {
 		this.records = await this.data.getContacts().then(x => x);
+		this.show('Contact list updated.');
 		console.log(this.records);
 	}
 
@@ -33,9 +36,11 @@ export class ContactStore {
 		if (model.id) {
 			response = await this.data.updateContact(model);
 			this.updateLocal(response);
+			this.show('Contact updated.');
 		} else {
 			response = await this.data.createContact(model);
 			this.createLocal(response);
+			this.show('Contact created.');
 		}
 		return response;
 	}
@@ -45,12 +50,12 @@ export class ContactStore {
    *
    * @param model The contact to be deleted.
    *
-   * @return //TODO: describe the return
    */
-	async delete(model: Contact): Promise<Contact> {
-		let response = await this.data.deleteContact(model.id);
-		this.deleteLocal(model);
-		return response;
+	delete(model: Contact) {
+		this.data.deleteContact(model.id).subscribe(data => {
+			this.deleteLocal(model);
+			this.show('Contact deleted.');
+		});
 	}
 
   //
@@ -85,6 +90,14 @@ export class ContactStore {
    */
 	private createLocal(model: Contact) {
     this.records.push(model);
+	}
+
+	private show(message: string) {
+		this.toastCtrl.create({
+			message: message,
+			duration: 3000,
+			position: 'bottom'
+		}).present();
 	}
 
 }

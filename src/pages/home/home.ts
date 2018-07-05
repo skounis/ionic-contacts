@@ -24,12 +24,29 @@ export class HomePage {
     console.log(this.store.records);
   }
 
-  show(record) {
+  /**
+   * Navigate to the Edit screen
+   *
+   * @param record The contact to be shown/edited
+   */
+  show(record: Contact) {
   	this.navCtrl.push(EditPage, { record: record, store: this.store });
   }
 
+  /**
+   * Navigate to the Edit screen for creation
+   */
   create() {
     this.navCtrl.push(EditPage, { record: null, store: this.store });
+  }
+
+  /**
+   * Delete a contact
+   *
+   * @param record The contact to be deleted
+   */
+  delete(record: Contact) {
+    this.store.delete(record);
   }
 
   filter(event) {

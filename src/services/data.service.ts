@@ -2,6 +2,7 @@ import { Contact } from '../models/contact';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { tap, map } from 'rxjs/operators';
 import { apiUrl } from '../config';
 import { MASTER_TOKEN } from '../config';
 
@@ -20,26 +21,35 @@ export class DataService {
   	return this.http.get<any>(url).toPromise();
   }
 
+	/**
+	 *	Create contact
+	 *
+	 * @param contact Contact
+	 * @return Contact The updated contact
+	 */
   createContact(contact: Contact): Promise<Contact> {
-		this.authorize(contact);
-
   	let url = `${apiUrl}contacts`;
   	return this.http.post<Contact>(url, contact).toPromise();
   }
 
+	/**
+	 *	Update contact
+	 *
+	 * @param contact Contact
+	 * @return Contact The updated contact
+	 */
   updateContact(contact: Contact): Promise<any> {
-		this.authorize(contact);
-
   	let url = `${apiUrl}contacts/${contact.id}`;
   	return this.http.put<Contact>(url, contact).toPromise();
   }
 
-  deleteContact(id: string): Promise<Contact> {
+	/**
+	 * Delete contact
+	 *
+	 * @param id The ID of the Contact to be deleted
+	 */
+  deleteContact(id: string) {
   	let url = `${apiUrl}contacts/${id}`;
-  	return this.http.delete<any>(url).toPromise();
+		return this.http.delete<any>(url);
   }
-
-	private authorize(body) {
-		body['access_token'] = MASTER_TOKEN;
-	}
 }

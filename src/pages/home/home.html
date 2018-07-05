@@ -20,7 +20,7 @@
          <p>{{record.email}}</p>
        </ion-item>
        <ion-item-options>
-         <button ion-button color="danger" icon-start>
+         <button ion-button color="danger" icon-start (click)="delete(record)">
            <ion-icon name="Delete"></ion-icon>
            Delete
          </button>
