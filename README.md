@@ -4,6 +4,8 @@ Play with Ionic, Unit Tests and Electron.
 A client front-end app for:
 - https://github.com/skounis/nodejs-rest-contacts
 
+[LIVE DEMO](https://skounis.github.io/ionic-contacts/www/)
+
 ### Prerequisites / Before we start
 #### Backend
 This applications needs a RESTful backend API to communication with. You have the following option
