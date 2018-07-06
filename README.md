@@ -4,7 +4,7 @@ Play with Ionic, Unit Tests and Electron.
 A client front-end app for:
 - https://github.com/skounis/nodejs-rest-contacts
 
-[LIVE DEMO](https://skounis.github.io/ionic-contacts/www/)
+Test the [LIVE DEMO](https://skounis.github.io/ionic-contacts/www/) or download the [Electron](https://github.com/skounis/ionic-contacts/releases/tag/v0.0.1) version of the app (currently available for MacOS)
 
 ### Prerequisites / Before we start
 #### Backend
