@@ -1,5 +1,5 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { map, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 import { Injectable } from '@angular/core';
 import { MASTER_TOKEN } from '../config';
@@ -30,7 +30,7 @@ export class AuthInterceptor implements HttpInterceptor {
 		}
 
 		const authReq = req.clone({ headers: headers });
-		// return next.handle(authReq);
+
 		return next.handle(authReq).pipe(
 			tap((event: HttpEvent<any>) => {}, (err: any) => {
 				if (err instanceof HttpErrorResponse) {

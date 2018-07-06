@@ -92,6 +92,11 @@ export class ContactStore {
     this.records.push(model);
 	}
 
+	/**
+	 * Display a Toast Message
+	 *
+	 * @param message The message to be displayed.ß
+	 */
 	private show(message: string) {
 		this.toastCtrl.create({
 			message: message,

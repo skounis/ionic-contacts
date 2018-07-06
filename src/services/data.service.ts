@@ -1,10 +1,7 @@
 import { Contact } from '../models/contact';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { tap, map } from 'rxjs/operators';
 import { apiUrl } from '../config';
-import { MASTER_TOKEN } from '../config';
 
 @Injectable()
 export class DataService {

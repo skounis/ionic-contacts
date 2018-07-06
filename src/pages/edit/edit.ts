@@ -36,9 +36,6 @@ export class EditPage implements OnInit {
         firstname: [this.record.firstname],
         lastname: [this.record.lastname, Validators.required],
         email: [this.record.email, [Validators.required, Validators.email]],
-        // phones: this.fb.array([
-        //   this.initPhones(),
-        // ])
         phones: this.fb.array(this.initPhones())
       }
     );
@@ -46,6 +43,10 @@ export class EditPage implements OnInit {
     console.log(this.form);
   }
 
+  /**
+   * Initialiaze the phones control(s)
+   * Creates an array of controlls and pushed an entry.
+   */
   initPhones() {
     // initialize phones
     const controls = [];
@@ -61,6 +62,9 @@ export class EditPage implements OnInit {
     return controls
   }
 
+  /**
+   * Push a new set of phone controls
+   */
   addPhone() {
     const control = <FormArray>this.form.controls['phones'];
     // add phone to the list
@@ -71,11 +75,18 @@ export class EditPage implements OnInit {
     control.push(c);
   }
 
+  /**
+   * Remove the selected phone (form controls)
+   */
   removePhone(i: number) {
     const control = <FormArray>this.form.controls['phones'];;
     control.removeAt(i);
   }
 
+  /**
+   * Serialize the Contact (Create or Update).
+   * Pop to the previous screen when finish.
+   */
   save() {
     console.log('Record:', this.record);
     console.log('Form:', this.form.value);
@@ -86,7 +97,5 @@ export class EditPage implements OnInit {
 
     this.store.update(updated);
     this.navCtrl.pop();
-    // // Toast
-    // this.toastService.show();
   }
 }
