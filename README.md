@@ -47,6 +47,7 @@ Then check the `./dist` folder for the generated binaries.
 - [Using Angular 2's Model-Driven Forms with FormGroup and FormControl](https://scotch.io/tutorials/using-angular-2s-model-driven-forms-with-formgroup-and-formcontrol)
 - [How to Build Nested Model-driven Forms in Angular 2](https://scotch.io/tutorials/how-to-build-nested-model-driven-forms-in-angular-2)
 - [Let’s Make Desktop Application With Ionic 3 and Electron](https://medium.com/@LohaniDamodar/lets-make-desktop-application-with-ionic-3-and-electron-44316f82901d)
-
+### Bonus
+Avatars are not part of the model. They are generated on the fly by utilizing the online service of [Pravatar](http://pravatar.cc/) (eg: http://i.pravatar.cc/64?u=5b3f70010fcdd40014155032) 
 ## Troubleshooting
 If running the tests fail try to install a latest version of webpack `npm i webpack`.
