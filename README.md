@@ -5,29 +5,41 @@ A client front-end app for:
 - https://github.com/skounis/nodejs-rest-contacts
 
 ### Prerequisites / Before we start
+#### Backend
+This applications needs a RESTful backend API to communication with. You have the following option
+1. Use the service deployed on Heroku:
+    - https://rest-contacts.herokuapp.com/
+2. Install the [nodejs-rest-contacts](https://github.com/skounis/nodejs-rest-contacts) project and run it on your local box
+
+Note: If you choose to go with the local installation you should set the `MASTER_KEY` and `JWT_SECRET` in `.env` file.
+
 #### Dependencies
-Install: `npm install`
+Go into the project folder and run `npm install`
 
 #### API
-Edit `src/config.ts` and set the base URL for the API.
+Edit `src/config.ts` and set the base URL for the API and the `MASTER_TOKEN`.
 A test backend is deployed on Heroku:
 
 - https://rest-contacts.herokuapp.com/
 
+If you use the deployed service on Heroku the `MASTER_TOKEN` is already in place. 
+
+If you run the [nodejs-rest-contacts](https://github.com/skounis/nodejs-rest-contacts) backend on your box, check the IP address and the port the Express server is listening for connections. (it should be 0.0.0.0:9000 or {your-local-ip}:9000)
+
 ### Development
-Testing the app in a browser: `ionic serve`
+Run `ionic serve` and test the application in your browser. 
 
 ### Tests
-Run the tests: `npm run test`
+Run `npm run test` and have all the unit tests executed. Currently the `app.component.ts` and `data.service.ts` are covered. 
 
 ### Electron
-Run in development with all auto reload and everything as if you were developing ionic application in browser: `npm run dev`
+Run `npm run dev` and start the Electron app in development with all auto reload and everything as if you were developing ionic application in browser.
 
 Note: You may need to reload the app the first time `(ctrl + R)`
 
 ### Build Electron
-Run `npm run ebuild`.
-Then check the `./dist` folder for generated binaries.
+Run `npm run ebuild`. This will create all the Electron redistributable files. 
+Then check the `./dist` folder for the generated binaries.
 
 ## References
 - [Using Angular 2's Model-Driven Forms with FormGroup and FormControl](https://scotch.io/tutorials/using-angular-2s-model-driven-forms-with-formgroup-and-formcontrol)
